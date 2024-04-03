@@ -9,6 +9,8 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Net.Sockets;
 using System.Net;
+using MongoDB.Driver;
+using MongoDB.Bson;
 namespace Ftp_Server
 {
     public partial class MainForm : Form
@@ -112,8 +114,72 @@ namespace Ftp_Server
                 }
             }
         }
+        public bool verifyUser(string username, string password)
+        {
+            var client = new MongoClient("mongodb+srv://22521168:TO82PIYRxNeYBd18@cluster0.x3ovogy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+            var database = client.GetDatabase("users");
+            var collection = database.GetCollection<BsonDocument>("account");
+            // Xây dựng truy vấn
+            var filter = Builders<BsonDocument>.Filter.Eq("username", username);
 
-        
+            // Thực hiện truy vấn
+            var result = collection.Find(filter).FirstOrDefault();
+            if (result != null)
+            {
+                if (password == result["password"])
+                {
+                    Console.WriteLine("Valid password.");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid password.");
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("User not found.");
+            }
+            return false;
+        }
+
+        private void handleUser(object obj, string cmd)
+        {
+            NetworkStream stream = (NetworkStream)obj;
+
+            byte[] buffer = new byte[1024];
+
+            // Get username after user cmd
+            string username = cmd.Substring(5);
+            Console.WriteLine("Username of client: " + username);
+
+            // Send response for user cmd
+            byte[] response = Encoding.ASCII.GetBytes("331 Please enter your password. Password: ");
+            stream.Write(response, 0, response.Length);
+
+            // Receive password from client
+            int bytesRead = stream.Read(buffer, 0, buffer.Length);
+            password = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+            Console.WriteLine("Password of client: " + password);
+
+            // Verify password
+            bool ok = verifyUser(username, password);
+            if (ok)
+            {
+                // Send response
+                response = Encoding.ASCII.GetBytes("230 You are logged in.");
+                stream.Write(response, 0, response.Length);
+            }
+            else
+            {
+                // Send response
+                response = Encoding.ASCII.GetBytes("530 Login incorrect.");
+                stream.Write(response, 0, response.Length);
+            }
+
+        }
+
         private void HandleConnection(object obj)
         {
             
@@ -151,7 +217,7 @@ namespace Ftp_Server
                     }
                     else if (receivedData.StartsWith("USER"))
                     {
-
+                        handleUser(stream, receivedData);
                     }
                     else if (receivedData.StartsWith("LIST"))
                     {
