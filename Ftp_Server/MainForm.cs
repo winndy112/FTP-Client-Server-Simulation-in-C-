@@ -149,7 +149,34 @@ namespace Ftp_Server
 
 
                     }
-                    
+                    else if (receivedData.StartsWith("USER"))
+                    {
+
+                    }
+                    else if (receivedData.StartsWith("LIST"))
+                    {
+
+                    }
+                    else if (receivedData.StartsWith("QUIT"))
+                    {
+
+                    }
+                    else if (receivedData.StartsWith("GET"))
+                    {
+
+                    }
+                    else if (receivedData.StartsWith("PUT"))
+                    {
+
+                    }
+                    else if (receivedData.StartsWith("CD"))
+                    {
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Command not found.");
+                    }
 
                 }
             }
