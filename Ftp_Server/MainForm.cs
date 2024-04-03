@@ -9,6 +9,11 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Net.Sockets;
 using System.Net;
+using MongoDB.Driver;
+using MongoDB.Bson;
+using System.CodeDom;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace Ftp_Server
 {
     public partial class MainForm : Form
@@ -114,6 +119,34 @@ namespace Ftp_Server
         }
 
         
+        /*
+            REGISTER <username> <password>
+         */
+        private bool register(string command)
+        {
+            string[] myParams = command.Split(' ');
+            string username, passwd;
+            if (myParams.Length > 2) 
+            {
+                username = myParams[1];
+                passwd = myParams[2];
+                try
+                {
+                    new ManageUsersForm(username, passwd).ShowDialog();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+                //accountCollection.InsertOne();
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private void HandleConnection(object obj)
         {
             
@@ -143,11 +176,10 @@ namespace Ftp_Server
                     string receivedData = Encoding.ASCII.GetString(buffer, 0, bytesRead);
                     if (receivedData.StartsWith("REGISTER"))
                     {
-                        string[] _receivedData = receivedData.Split(' ');
-                        username_client = _receivedData[1];
-                        password_client = _receivedData[2];
+                        if (register(receivedData))
+                        {
 
-
+                        }
                     }
                     
 
@@ -162,5 +194,50 @@ namespace Ftp_Server
                 client.Close();
             }
         }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new ManageUsersForm().ShowDialog();
+        }
+    }
+
+    public class MyMongoDBConnect
+    {
+        const string connectionUri = "mongodb+srv://22521168:TO82PIYRxNeYBd18@cluster0.x3ovogy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+        public MongoClient connection;
+        public MyMongoDBConnect()
+        {
+            var settings = MongoClientSettings.FromConnectionString(connectionUri);
+            // Set the ServerApi field of the settings object to set the version of the Stable API on the client
+            settings.ServerApi = new ServerApi(ServerApiVersion.V1);
+            // Create a new client and connect to the server
+            this.connection = new MongoClient(settings);
+            // Send a ping to confirm a successful connection
+        }
+    }
+    public class Account
+    {
+
+        public ObjectId _id { get; set; }
+
+        [BsonElement("username")]
+        public string username { get; set; }
+        [BsonElement("passwd")]
+        public string passwd { get; set; }
+        [BsonElement("role")]
+        public string role { get; set; }
+        [BsonElement("virtualpath")]
+        public string virtualpath { get; set; }
+        [BsonElement("location")]
+        public string location { get; set; }
+        public Account(string _username, string _passwd, string _role, string _virtualpath, string _location)
+        {
+            this.username = _username;
+            this.passwd = _passwd;
+            this.role = _role;
+            this.virtualpath = _virtualpath;
+            this.location = _location;
+        }
     }
 }
+

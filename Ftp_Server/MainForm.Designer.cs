@@ -39,6 +39,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ViewLog = new System.Windows.Forms.ListView();
             this.viewSession = new System.Windows.Forms.ListView();
+            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Server.SuspendLayout();
             this.footer.SuspendLayout();
             this.SuspendLayout();
@@ -62,10 +64,11 @@
             this.Server.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.Server.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.Server.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.serverToolStripMenuItem});
+            this.serverToolStripMenuItem,
+            this.configurationToolStripMenuItem});
             this.Server.Location = new System.Drawing.Point(0, 0);
             this.Server.Name = "Server";
-            this.Server.Size = new System.Drawing.Size(1305, 40);
+            this.Server.Size = new System.Drawing.Size(1305, 42);
             this.Server.TabIndex = 1;
             this.Server.Text = "Server";
             // 
@@ -77,31 +80,31 @@
             this.configureToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
-            this.serverToolStripMenuItem.Size = new System.Drawing.Size(102, 44);
+            this.serverToolStripMenuItem.Size = new System.Drawing.Size(101, 38);
             this.serverToolStripMenuItem.Text = "Server";
             // 
             // connectToolStripMenuItem
             // 
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(267, 44);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.connectToolStripMenuItem.Text = "Connect";
             // 
             // disconnectToolStripMenuItem
             // 
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(267, 44);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.disconnectToolStripMenuItem.Text = "Disconnect";
             // 
             // configureToolStripMenuItem
             // 
             this.configureToolStripMenuItem.Name = "configureToolStripMenuItem";
-            this.configureToolStripMenuItem.Size = new System.Drawing.Size(267, 44);
+            this.configureToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.configureToolStripMenuItem.Text = "Configure";
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(267, 44);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.quitToolStripMenuItem.Text = "Quit";
             // 
             // footer
@@ -146,6 +149,21 @@
             this.viewSession.TabIndex = 3;
             this.viewSession.UseCompatibleStateImageBehavior = false;
             // 
+            // configurationToolStripMenuItem
+            // 
+            this.configurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.usersToolStripMenuItem});
+            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(181, 38);
+            this.configurationToolStripMenuItem.Text = "Configuration";
+            // 
+            // usersToolStripMenuItem
+            // 
+            this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.usersToolStripMenuItem.Text = "Users";
+            this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -183,6 +201,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView ViewLog;
         private System.Windows.Forms.ListView viewSession;
+        private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
     }
 }
 
