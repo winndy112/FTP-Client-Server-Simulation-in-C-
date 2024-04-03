@@ -13,6 +13,7 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using System.CodeDom;
 using MongoDB.Bson.Serialization.Attributes;
+using BCrypt.Net;
 
 namespace Ftp_Server
 {
@@ -24,6 +25,7 @@ namespace Ftp_Server
         private int control_port = 30;
         private TcpListener listener;
         private Thread listenThread;
+        private bool runServer;
         public MainForm()
         {
             InitializeComponent();
@@ -45,20 +47,20 @@ namespace Ftp_Server
         private void CreateHeaders_viewLog()
         {
             // Clear existing columns
-            ViewLog.Columns.Clear();
+            viewLog.Columns.Clear();
 
             // Add new columns
-            ViewLog.Columns.Add("Date/Time");
-            ViewLog.Columns.Add("Type");
-            ViewLog.Columns.Add("Message");
+            viewLog.Columns.Add("Date/Time");
+            viewLog.Columns.Add("Type");
+            viewLog.Columns.Add("Message");
             
 
             // Set column widths
-            ViewLog.Columns[0].Width = 200;
-            ViewLog.Columns[1].Width = 200;
-            ViewLog.Columns[2].Width = 500;
+            viewLog.Columns[0].Width = 200;
+            viewLog.Columns[1].Width = 200;
+            viewLog.Columns[2].Width = 500;
             
-            ViewLog.View = View.Details;
+            viewLog.View = View.Details;
         }
         private void CreateHeaders_viewSession()
         {
@@ -89,11 +91,9 @@ namespace Ftp_Server
                 label1.Text = "Connected to " + host;
                 CreateHeaders_viewLog();
                 CreateHeaders_viewSession();
+                //AcceptConnections();
                 listenThread = new Thread(new ThreadStart(AcceptConnections));
                 listenThread.Start();
-
-                
-
             }
             catch (Exception ex)
             {
@@ -102,7 +102,8 @@ namespace Ftp_Server
         }
         private void AcceptConnections()
         {
-            while (true)
+            bool runServer = true;
+            while (runServer) 
             {
                 try
                 {
@@ -119,46 +120,17 @@ namespace Ftp_Server
         }
         public bool verifyUser(string username, string password)
         {
-            var client = new MongoClient("mongodb+srv://22521168:TO82PIYRxNeYBd18@cluster0.x3ovogy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+            var client = new MyMongoDBConnect().connection;
             var database = client.GetDatabase("users");
             var collection = database.GetCollection<BsonDocument>("account");
             // Xây dựng truy vấn
             var filter = Builders<BsonDocument>.Filter.Eq("username", username);
-
-        
-        /*
-            REGISTER <username> <password>
-         */
-        private bool register(string command)
-        {
-            string[] myParams = command.Split(' ');
-            string username, passwd;
-            if (myParams.Length > 2) 
-            {
-                username = myParams[1];
-                passwd = myParams[2];
-                try
-                {
-                    new ManageUsersForm(username, passwd).ShowDialog();
-                    return true;
-                }
-                catch
-                {
-                    return false;
-                }
-                //accountCollection.InsertOne();
-            }
-            else
-            {
-                return false;
-            }
-        }
-
             // Thực hiện truy vấn
             var result = collection.Find(filter).FirstOrDefault();
+            
             if (result != null)
             {
-                if (password == result["password"])
+                if (BCrypt.Net.BCrypt.EnhancedVerify(password, result["passwd"].AsString))
                 {
                     Console.WriteLine("Valid password.");
                     return true;
@@ -175,6 +147,45 @@ namespace Ftp_Server
             }
             return false;
         }
+        /*
+            REGISTER <username> <password>
+         */
+
+
+        private void handleRegister(object obj, string command)
+        {
+            string[] myParams = command.Split(' ');
+            
+            NetworkStream stream = (NetworkStream)obj;
+            byte[] buffer = new byte[1024];
+
+            // Send response for user cmd
+            byte[] response;
+
+            if (myParams.Length > 2)
+            {
+                string username, passwd;
+                username = myParams[1];
+                passwd = myParams[2];
+                try
+                {
+                    new ManageUsersForm(stream, username, passwd).ShowDialog();
+                    response = Encoding.ASCII.GetBytes("200 Register successfully.");
+                    stream.Write(response, 0, response.Length);
+                }
+                catch
+                {
+                    response = Encoding.ASCII.GetBytes("404 Register failed.");
+                    stream.Write(response, 0, response.Length);
+                };
+            }
+            else
+            {
+                response = Encoding.ASCII.GetBytes("xxx Please enter your username and password: REGISTER <username> <password>");
+                stream.Write(response, 0, response.Length);
+            }
+        }
+
 
         private void handleUser(object obj, string cmd)
         {
@@ -241,9 +252,7 @@ namespace Ftp_Server
                     string receivedData = Encoding.ASCII.GetString(buffer, 0, bytesRead);
                     if (receivedData.StartsWith("REGISTER"))
                     {
-                        if (register(receivedData))
-                        {
-                        }
+                        handleRegister(stream, receivedData);
                     }
                     else if (receivedData.StartsWith("USER"))
                     {
@@ -289,6 +298,16 @@ namespace Ftp_Server
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new ManageUsersForm().ShowDialog();
+        }
+
+        private void disconnectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            runServer = false;
+        }
+
+        private void footer_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 

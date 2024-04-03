@@ -70,19 +70,17 @@
             this.inforServerConnectPanel.Controls.Add(this.usernameLabel);
             this.inforServerConnectPanel.Controls.Add(this.portLabel);
             this.inforServerConnectPanel.Controls.Add(this.hostLabel);
-            this.inforServerConnectPanel.Location = new System.Drawing.Point(0, 28);
-            this.inforServerConnectPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.inforServerConnectPanel.Location = new System.Drawing.Point(0, 44);
             this.inforServerConnectPanel.Name = "inforServerConnectPanel";
-            this.inforServerConnectPanel.Size = new System.Drawing.Size(1018, 39);
+            this.inforServerConnectPanel.Size = new System.Drawing.Size(1527, 61);
             this.inforServerConnectPanel.TabIndex = 1;
             this.inforServerConnectPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.inforServerConnectPanel_Paint);
             // 
             // connectButton
             // 
-            this.connectButton.Location = new System.Drawing.Point(781, 6);
-            this.connectButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.connectButton.Location = new System.Drawing.Point(1172, 9);
             this.connectButton.Name = "connectButton";
-            this.connectButton.Size = new System.Drawing.Size(113, 26);
+            this.connectButton.Size = new System.Drawing.Size(170, 41);
             this.connectButton.TabIndex = 8;
             this.connectButton.Text = "Connect";
             this.connectButton.UseVisualStyleBackColor = true;
@@ -90,77 +88,70 @@
             // 
             // passwdTextBox
             // 
-            this.passwdTextBox.Location = new System.Drawing.Point(648, 6);
-            this.passwdTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.passwdTextBox.Location = new System.Drawing.Point(972, 9);
             this.passwdTextBox.Multiline = true;
             this.passwdTextBox.Name = "passwdTextBox";
-            this.passwdTextBox.Size = new System.Drawing.Size(115, 28);
+            this.passwdTextBox.Size = new System.Drawing.Size(170, 42);
             this.passwdTextBox.TabIndex = 7;
+            this.passwdTextBox.UseSystemPasswordChar = true;
             // 
             // usernameTextBox
             // 
-            this.usernameTextBox.Location = new System.Drawing.Point(439, 6);
-            this.usernameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.usernameTextBox.Location = new System.Drawing.Point(658, 9);
             this.usernameTextBox.Multiline = true;
             this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(115, 28);
+            this.usernameTextBox.Size = new System.Drawing.Size(170, 42);
             this.usernameTextBox.TabIndex = 6;
             // 
             // hostTextBox
             // 
-            this.hostTextBox.Location = new System.Drawing.Point(53, 6);
-            this.hostTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.hostTextBox.Location = new System.Drawing.Point(80, 9);
             this.hostTextBox.Multiline = true;
             this.hostTextBox.Name = "hostTextBox";
-            this.hostTextBox.Size = new System.Drawing.Size(115, 28);
+            this.hostTextBox.Size = new System.Drawing.Size(170, 42);
             this.hostTextBox.TabIndex = 4;
             // 
             // passwdLabel
             // 
             this.passwdLabel.AutoSize = true;
-            this.passwdLabel.Location = new System.Drawing.Point(565, 12);
-            this.passwdLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.passwdLabel.Location = new System.Drawing.Point(848, 19);
             this.passwdLabel.Name = "passwdLabel";
-            this.passwdLabel.Size = new System.Drawing.Size(70, 16);
+            this.passwdLabel.Size = new System.Drawing.Size(112, 25);
             this.passwdLabel.TabIndex = 3;
             this.passwdLabel.Text = "Password:";
             // 
             // portTextBox
             // 
-            this.portTextBox.Location = new System.Drawing.Point(225, 6);
-            this.portTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.portTextBox.Location = new System.Drawing.Point(338, 9);
             this.portTextBox.Multiline = true;
             this.portTextBox.Name = "portTextBox";
-            this.portTextBox.Size = new System.Drawing.Size(115, 28);
+            this.portTextBox.Size = new System.Drawing.Size(170, 42);
             this.portTextBox.TabIndex = 5;
             // 
             // usernameLabel
             // 
             this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Location = new System.Drawing.Point(355, 12);
-            this.usernameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.usernameLabel.Location = new System.Drawing.Point(532, 19);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(73, 16);
+            this.usernameLabel.Size = new System.Drawing.Size(116, 25);
             this.usernameLabel.TabIndex = 2;
             this.usernameLabel.Text = "Username:";
             // 
             // portLabel
             // 
             this.portLabel.AutoSize = true;
-            this.portLabel.Location = new System.Drawing.Point(181, 12);
-            this.portLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.portLabel.Location = new System.Drawing.Point(272, 19);
             this.portLabel.Name = "portLabel";
-            this.portLabel.Size = new System.Drawing.Size(34, 16);
+            this.portLabel.Size = new System.Drawing.Size(57, 25);
             this.portLabel.TabIndex = 1;
             this.portLabel.Text = "Port:";
             // 
             // hostLabel
             // 
             this.hostLabel.AutoSize = true;
-            this.hostLabel.Location = new System.Drawing.Point(8, 12);
-            this.hostLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.hostLabel.Location = new System.Drawing.Point(12, 19);
             this.hostLabel.Name = "hostLabel";
-            this.hostLabel.Size = new System.Drawing.Size(38, 16);
+            this.hostLabel.Size = new System.Drawing.Size(62, 25);
             this.hostLabel.TabIndex = 0;
             this.hostLabel.Text = "Host:";
             // 
@@ -170,8 +161,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.mainContainer.Location = new System.Drawing.Point(0, 70);
-            this.mainContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mainContainer.Location = new System.Drawing.Point(0, 109);
             this.mainContainer.Name = "mainContainer";
             this.mainContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -182,9 +172,9 @@
             // mainContainer.Panel2
             // 
             this.mainContainer.Panel2.BackColor = System.Drawing.SystemColors.Info;
-            this.mainContainer.Size = new System.Drawing.Size(1018, 518);
-            this.mainContainer.SplitterDistance = 345;
-            this.mainContainer.SplitterWidth = 1;
+            this.mainContainer.Size = new System.Drawing.Size(1527, 809);
+            this.mainContainer.SplitterDistance = 538;
+            this.mainContainer.SplitterWidth = 2;
             this.mainContainer.TabIndex = 2;
             // 
             // mainsiteContainer
@@ -192,7 +182,6 @@
             this.mainsiteContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.mainsiteContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainsiteContainer.Location = new System.Drawing.Point(0, 0);
-            this.mainsiteContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mainsiteContainer.Name = "mainsiteContainer";
             // 
             // mainsiteContainer.Panel1
@@ -205,21 +194,22 @@
             this.mainsiteContainer.Panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.mainsiteContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.mainsiteContainer.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mainsiteContainer.Size = new System.Drawing.Size(1018, 345);
-            this.mainsiteContainer.SplitterDistance = 338;
-            this.mainsiteContainer.SplitterWidth = 1;
+            this.mainsiteContainer.Size = new System.Drawing.Size(1527, 538);
+            this.mainsiteContainer.SplitterDistance = 507;
+            this.mainsiteContainer.SplitterWidth = 2;
             this.mainsiteContainer.TabIndex = 0;
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.serverToolStripMenuItem,
             this.userToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(1019, 26);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1528, 40);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -229,20 +219,20 @@
             this.reconnectToolStripMenuItem,
             this.disconnectToolStripMenuItem});
             this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
-            this.serverToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
+            this.serverToolStripMenuItem.Size = new System.Drawing.Size(101, 36);
             this.serverToolStripMenuItem.Text = "Server";
             // 
             // reconnectToolStripMenuItem
             // 
             this.reconnectToolStripMenuItem.Name = "reconnectToolStripMenuItem";
-            this.reconnectToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.reconnectToolStripMenuItem.Size = new System.Drawing.Size(265, 44);
             this.reconnectToolStripMenuItem.Text = "Reconnect";
             this.reconnectToolStripMenuItem.Click += new System.EventHandler(this.reconnectToolStripMenuItem_Click);
             // 
             // disconnectToolStripMenuItem
             // 
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(265, 44);
             this.disconnectToolStripMenuItem.Text = "Disconnect";
             this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
             // 
@@ -252,33 +242,32 @@
             this.registerToolStripMenuItem,
             this.settingsToolStripMenuItem});
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(52, 24);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(81, 36);
             this.userToolStripMenuItem.Text = "User";
             // 
             // registerToolStripMenuItem
             // 
             this.registerToolStripMenuItem.Name = "registerToolStripMenuItem";
-            this.registerToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.registerToolStripMenuItem.Size = new System.Drawing.Size(233, 44);
             this.registerToolStripMenuItem.Text = "Register";
             this.registerToolStripMenuItem.Click += new System.EventHandler(this.registerToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(233, 44);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1019, 591);
+            this.ClientSize = new System.Drawing.Size(1528, 923);
             this.Controls.Add(this.mainContainer);
             this.Controls.Add(this.inforServerConnectPanel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
             this.Text = "FTP Client";
             this.Load += new System.EventHandler(this.MainForm_Load);
