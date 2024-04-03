@@ -37,7 +37,42 @@ namespace Ftp_Server
                 }
             }
         }
-        
+        private void CreateHeaders_viewLog()
+        {
+            // Clear existing columns
+            ViewLog.Columns.Clear();
+
+            // Add new columns
+            ViewLog.Columns.Add("Date/Time");
+            ViewLog.Columns.Add("Type");
+            ViewLog.Columns.Add("Message");
+            
+
+            // Set column widths
+            ViewLog.Columns[0].Width = 200;
+            ViewLog.Columns[1].Width = 200;
+            ViewLog.Columns[2].Width = 500;
+            
+            ViewLog.View = View.Details;
+        }
+        private void CreateHeaders_viewSession()
+        {
+            // Clear existing columns
+            viewSession.Columns.Clear();
+            // Add new columns
+            viewSession.Columns.Add("Date/Time");
+            viewSession.Columns.Add("SessionID");
+            viewSession.Columns.Add("Host");
+            viewSession.Columns.Add("User");
+            // Set column widths
+            viewSession.Columns[0].Width = 200;
+            viewSession.Columns[1].Width = 200;
+            viewSession.Columns[2].Width = 200;
+            viewSession.Columns[2].Width = 200;
+
+            viewSession.View = View.Details;
+        }
+
         private void StartListening()
         {
             try
@@ -47,7 +82,8 @@ namespace Ftp_Server
                 MessageBox.Show("FTP server started listening on port " + control_port);
                 connection.Visible = false;
                 label1.Text = "Connected to " + host;
-
+                CreateHeaders_viewLog();
+                CreateHeaders_viewSession();
                 listenThread = new Thread(new ThreadStart(AcceptConnections));
                 listenThread.Start();
 
@@ -77,16 +113,18 @@ namespace Ftp_Server
             }
         }
 
+        
         private void HandleConnection(object obj)
         {
             
             TcpClient client = (TcpClient)obj;
             try
             {
+                string username_client, password_client; 
                 // Lấy dữ liệu luồng mạng của client
                 NetworkStream stream = client.GetStream();
                 host = Dns.GetHostName();
-               
+                
                 // Chuỗi chào mừng
                 string welcomeMessage = "Connected to" + Dns.GetHostByName(host).AddressList[0].ToString()+  "\r\n";
 
@@ -101,11 +139,19 @@ namespace Ftp_Server
                 while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
                 {
                     // Xử lý dữ liệu đọc được từ client ở đây
-                    // Ví dụ: In dữ liệu lên màn hình
+                    
                     string receivedData = Encoding.ASCII.GetString(buffer, 0, bytesRead);
-                  
-                }
+                    if (receivedData.StartsWith("REGISTER"))
+                    {
+                        string[] _receivedData = receivedData.Split(' ');
+                        username_client = _receivedData[1];
+                        password_client = _receivedData[2];
 
+
+                    }
+                    
+
+                }
             }
             catch (Exception ex)
             {

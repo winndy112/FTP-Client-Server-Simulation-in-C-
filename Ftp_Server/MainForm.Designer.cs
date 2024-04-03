@@ -49,7 +49,7 @@
             this.connection.AutoSize = true;
             this.connection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.connection.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.connection.Location = new System.Drawing.Point(312, 326);
+            this.connection.Location = new System.Drawing.Point(474, 436);
             this.connection.Name = "connection";
             this.connection.Size = new System.Drawing.Size(318, 69);
             this.connection.TabIndex = 0;
@@ -65,7 +65,7 @@
             this.serverToolStripMenuItem});
             this.Server.Location = new System.Drawing.Point(0, 0);
             this.Server.Name = "Server";
-            this.Server.Size = new System.Drawing.Size(980, 40);
+            this.Server.Size = new System.Drawing.Size(1305, 40);
             this.Server.TabIndex = 1;
             this.Server.Text = "Server";
             // 
@@ -77,7 +77,7 @@
             this.configureToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
-            this.serverToolStripMenuItem.Size = new System.Drawing.Size(102, 36);
+            this.serverToolStripMenuItem.Size = new System.Drawing.Size(102, 44);
             this.serverToolStripMenuItem.Text = "Server";
             // 
             // connectToolStripMenuItem
@@ -109,9 +109,9 @@
             this.footer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.footer.Controls.Add(this.label1);
-            this.footer.Location = new System.Drawing.Point(0, 747);
+            this.footer.Location = new System.Drawing.Point(0, 968);
             this.footer.Name = "footer";
-            this.footer.Size = new System.Drawing.Size(980, 46);
+            this.footer.Size = new System.Drawing.Size(1305, 53);
             this.footer.TabIndex = 2;
             // 
             // label1
@@ -125,19 +125,24 @@
             // 
             // ViewLog
             // 
+            this.ViewLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ViewLog.HideSelection = false;
-            this.ViewLog.Location = new System.Drawing.Point(0, 79);
+            this.ViewLog.Location = new System.Drawing.Point(0, 43);
             this.ViewLog.Name = "ViewLog";
-            this.ViewLog.Size = new System.Drawing.Size(977, 540);
+            this.ViewLog.Size = new System.Drawing.Size(1302, 761);
             this.ViewLog.TabIndex = 0;
             this.ViewLog.UseCompatibleStateImageBehavior = false;
             // 
             // viewSession
             // 
+            this.viewSession.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.viewSession.HideSelection = false;
-            this.viewSession.Location = new System.Drawing.Point(0, 615);
+            this.viewSession.Location = new System.Drawing.Point(-3, 802);
             this.viewSession.Name = "viewSession";
-            this.viewSession.Size = new System.Drawing.Size(980, 134);
+            this.viewSession.Size = new System.Drawing.Size(1305, 176);
             this.viewSession.TabIndex = 3;
             this.viewSession.UseCompatibleStateImageBehavior = false;
             // 
@@ -146,7 +151,7 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(980, 794);
+            this.ClientSize = new System.Drawing.Size(1305, 1015);
             this.Controls.Add(this.viewSession);
             this.Controls.Add(this.connection);
             this.Controls.Add(this.footer);
