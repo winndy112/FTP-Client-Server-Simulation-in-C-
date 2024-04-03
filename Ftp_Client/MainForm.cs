@@ -8,15 +8,39 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Driver;
+using BCrypt.Net;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Ftp_Client
 {
+    public class Account
+    {
+        public ObjectId _id { get; set; }
+
+        [BsonElement("username")]
+        public string username { get; set; }
+
+        [BsonElement("passwd")]
+        public string passwd { get; set; }
+
+        public Account(string _username, string _passwd)
+        {
+            this.username = _username;
+            this.passwd = _passwd;
+        }
+
+    }
     public partial class MainForm : Form
     {
         public MainForm()
         {
             InitializeComponent();
         }
+
+        
 
         public void loadForm(object Panel, object Form)
         {
@@ -121,7 +145,7 @@ namespace Ftp_Client
 
         private void registerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /* Đăng kí ở đây */
+            new RegisterForm().Show();
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
