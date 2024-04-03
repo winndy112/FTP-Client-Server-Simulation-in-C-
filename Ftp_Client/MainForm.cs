@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -50,9 +51,56 @@ namespace Ftp_Client
                 
         }
 
-        private void connectButton_Click(object sender, EventArgs e)
+        private async void connectButton_Click(object sender, EventArgs e)
         {
             /* Đăng nhập và kết nối ở đây */
+            string ftpServer = hostTextBox.Text;
+            int portServer = Convert.ToInt32(portTextBox.Text);
+            string username = usernameTextBox.Text;
+            string password = passwdTextBox.Text;
+            using (TcpClient client = new TcpClient())
+            {
+                try
+                {
+                    await client.ConnectAsync(ftpServer, portServer);
+                    using (NetworkStream stream = client.GetStream())
+                    {
+
+                        byte[] buffer = new byte[1024];
+
+                        // Fist response
+                        int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+                        string response = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+                        // infoBox.Text += response + '\n';
+
+                        // Send user username
+                        byte[] data = Encoding.ASCII.GetBytes("USER " + username);
+                        await stream.WriteAsync(data, 0, data.Length);
+
+                        // Receive response
+                        bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+                        response = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+                        // infoBox.Text += response + '\n'; // Phản hồi từ máy chủ sau khi gửi lệnh USER
+
+                        // Send password
+                        data = Encoding.ASCII.GetBytes(password);
+                        await stream.WriteAsync(data, 0, data.Length);
+
+                        // Receive response
+                        bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+                        response = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+                        // infoBox.Text += response + '\n';
+
+                        MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Đăng nhập thất bại! Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+
         }
 
         // Không để làm gì cả
