@@ -16,6 +16,23 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Ftp_Client
 {
+    public class Account
+    {
+        public ObjectId _id { get; set; }
+
+        [BsonElement("username")]
+        public string username { get; set; }
+
+        [BsonElement("passwd")]
+        public string passwd { get; set; }
+
+        public Account(string _username, string _passwd)
+        {
+            this.username = _username;
+            this.passwd = _passwd;
+        }
+
+    }
     public partial class MainForm : Form
     {
         public MainForm()
@@ -159,4 +176,5 @@ namespace Ftp_Client
         }
 
     }
+
 }
