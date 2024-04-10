@@ -33,8 +33,6 @@
             this.serverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +65,6 @@
             // 
             // Server
             // 
-            this.Server.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.Server.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.Server.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.serverToolStripMenuItem,
@@ -83,43 +80,28 @@
             this.serverToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.connectToolStripMenuItem,
             this.disconnectToolStripMenuItem,
-            this.configureToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
-            this.serverToolStripMenuItem.Size = new System.Drawing.Size(101, 36);
+            this.serverToolStripMenuItem.Size = new System.Drawing.Size(102, 36);
             this.serverToolStripMenuItem.Text = "Server";
             // 
             // connectToolStripMenuItem
             // 
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(265, 44);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.connectToolStripMenuItem.Text = "Connect";
             // 
             // disconnectToolStripMenuItem
             // 
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(265, 44);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.disconnectToolStripMenuItem.Text = "Disconnect";
             this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
-            // 
-            // configureToolStripMenuItem
-            // 
-            this.configureToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.usersToolStripMenuItem1});
-            this.configureToolStripMenuItem.Name = "configureToolStripMenuItem";
-            this.configureToolStripMenuItem.Size = new System.Drawing.Size(265, 44);
-            this.configureToolStripMenuItem.Text = "Configure";
-            // 
-            // usersToolStripMenuItem1
-            // 
-            this.usersToolStripMenuItem1.Name = "usersToolStripMenuItem1";
-            this.usersToolStripMenuItem1.Size = new System.Drawing.Size(204, 44);
-            this.usersToolStripMenuItem1.Text = "Users";
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(265, 44);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.quitToolStripMenuItem.Text = "Quit";
             // 
             // configurationToolStripMenuItem
@@ -127,13 +109,13 @@
             this.configurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usersToolStripMenuItem});
             this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(181, 36);
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(182, 36);
             this.configurationToolStripMenuItem.Text = "Configuration";
             // 
             // usersToolStripMenuItem
             // 
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(204, 44);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.usersToolStripMenuItem.Text = "Users";
             this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
@@ -146,7 +128,6 @@
             this.footer.Name = "footer";
             this.footer.Size = new System.Drawing.Size(1246, 53);
             this.footer.TabIndex = 2;
-            this.footer.Paint += new System.Windows.Forms.PaintEventHandler(this.footer_Paint);
             // 
             // label1
             // 
@@ -187,6 +168,7 @@
             this.viewLog.Size = new System.Drawing.Size(1239, 689);
             this.viewLog.TabIndex = 0;
             this.viewLog.UseCompatibleStateImageBehavior = false;
+            
             // 
             // viewSession
             // 
@@ -232,13 +214,11 @@
         private System.Windows.Forms.ToolStripMenuItem serverToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem disconnectToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem configureToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.Panel footer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem1;
         private System.Windows.Forms.SplitContainer mainContainer;
         private System.Windows.Forms.ListView viewLog;
         private System.Windows.Forms.ListView viewSession;

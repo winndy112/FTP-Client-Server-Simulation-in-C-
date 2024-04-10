@@ -24,8 +24,16 @@ namespace Ftp_Server
         }
 
         private void ok_Click(object sender, EventArgs e)
-        {
-            port = int.Parse(this.Port.Text);
+        {   try
+            {
+                port = int.Parse(this.Port.Text);
+            } 
+            catch
+            {
+                MessageBox.Show("Port không hợp lệ", "error");
+                this.Close();
+            }
+
             host = this.hostName.Text;
             password = this.Password.Text;
             this.DialogResult = DialogResult.OK;

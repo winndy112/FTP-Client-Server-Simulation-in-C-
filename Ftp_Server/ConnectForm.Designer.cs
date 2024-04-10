@@ -92,6 +92,7 @@ namespace Ftp_Server
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(361, 38);
             this.Password.TabIndex = 5;
+            this.Password.UseSystemPasswordChar = true;
             // 
             // ok
             // 
