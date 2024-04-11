@@ -25,7 +25,6 @@ namespace Ftp_Server
         private int control_port = 30;
         private TcpListener listener;
         private Thread listenThread;
-        private bool runServer;
         public MainForm()
         {
             InitializeComponent();
@@ -302,7 +301,6 @@ namespace Ftp_Server
 
         private void disconnectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            runServer = false;
         }
 
         private void footer_Paint(object sender, PaintEventArgs e)
@@ -313,6 +311,8 @@ namespace Ftp_Server
 
     public class MyMongoDBConnect
     {
+        //Demo connect link
+        //const string connectionUri = "mongodb+srv://client:123@cluster0.mpy38sv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
         const string connectionUri = "mongodb+srv://22521168:TO82PIYRxNeYBd18@cluster0.x3ovogy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
         public MongoClient connection;
         public MyMongoDBConnect()
