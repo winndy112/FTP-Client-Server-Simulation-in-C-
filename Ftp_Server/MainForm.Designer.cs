@@ -55,7 +55,7 @@
             this.connection.AutoSize = true;
             this.connection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.connection.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.connection.Location = new System.Drawing.Point(445, 415);
+            this.connection.Location = new System.Drawing.Point(439, 299);
             this.connection.Name = "connection";
             this.connection.Size = new System.Drawing.Size(318, 69);
             this.connection.TabIndex = 0;
@@ -83,26 +83,26 @@
             this.disconnectToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
-            this.serverToolStripMenuItem.Size = new System.Drawing.Size(101, 36);
+            this.serverToolStripMenuItem.Size = new System.Drawing.Size(102, 36);
             this.serverToolStripMenuItem.Text = "Server";
             // 
             // connectToolStripMenuItem
             // 
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(265, 44);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(267, 44);
             this.connectToolStripMenuItem.Text = "Connect";
             // 
             // disconnectToolStripMenuItem
             // 
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(265, 44);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(267, 44);
             this.disconnectToolStripMenuItem.Text = "Disconnect";
             this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(265, 44);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(267, 44);
             this.quitToolStripMenuItem.Text = "Quit";
             // 
             // configurationToolStripMenuItem
@@ -110,13 +110,13 @@
             this.configurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usersToolStripMenuItem});
             this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(181, 36);
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(182, 36);
             this.configurationToolStripMenuItem.Text = "Configuration";
             // 
             // usersToolStripMenuItem
             // 
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(204, 44);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(206, 44);
             this.usersToolStripMenuItem.Text = "Users";
             this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
@@ -151,6 +151,7 @@
             // 
             // mainContainer.Panel1
             // 
+            this.mainContainer.Panel1.Controls.Add(this.connection);
             this.mainContainer.Panel1.Controls.Add(this.viewLog);
             // 
             // mainContainer.Panel2
@@ -186,7 +187,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1246, 972);
-            this.Controls.Add(this.connection);
             this.Controls.Add(this.footer);
             this.Controls.Add(this.Server);
             this.Controls.Add(this.mainContainer);
@@ -199,6 +199,7 @@
             this.footer.ResumeLayout(false);
             this.footer.PerformLayout();
             this.mainContainer.Panel1.ResumeLayout(false);
+            this.mainContainer.Panel1.PerformLayout();
             this.mainContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).EndInit();
             this.mainContainer.ResumeLayout(false);

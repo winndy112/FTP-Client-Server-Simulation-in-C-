@@ -210,7 +210,7 @@ namespace Ftp_Server
             {
                 viewLog.Items.Add(item);
             }
-           
+            viewLog.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
         private void addSession(string[] row)
         {
@@ -226,7 +226,7 @@ namespace Ftp_Server
             {
                 viewSession.Items.Add(item);
             }
-
+            viewSession.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
         private void handleUser(object obj, object obj_stream, string cmd)
         {
