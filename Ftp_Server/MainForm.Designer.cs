@@ -55,7 +55,7 @@
             this.connection.AutoSize = true;
             this.connection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.connection.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.connection.Location = new System.Drawing.Point(445, 415);
+            this.connection.Location = new System.Drawing.Point(439, 299);
             this.connection.Name = "connection";
             this.connection.Size = new System.Drawing.Size(318, 69);
             this.connection.TabIndex = 0;
@@ -65,6 +65,7 @@
             // 
             // Server
             // 
+            this.Server.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.Server.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.Server.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.serverToolStripMenuItem,
@@ -88,20 +89,20 @@
             // connectToolStripMenuItem
             // 
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(267, 44);
             this.connectToolStripMenuItem.Text = "Connect";
             // 
             // disconnectToolStripMenuItem
             // 
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(267, 44);
             this.disconnectToolStripMenuItem.Text = "Disconnect";
             this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(267, 44);
             this.quitToolStripMenuItem.Text = "Quit";
             // 
             // configurationToolStripMenuItem
@@ -115,7 +116,7 @@
             // usersToolStripMenuItem
             // 
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(206, 44);
             this.usersToolStripMenuItem.Text = "Users";
             this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
@@ -150,6 +151,7 @@
             // 
             // mainContainer.Panel1
             // 
+            this.mainContainer.Panel1.Controls.Add(this.connection);
             this.mainContainer.Panel1.Controls.Add(this.viewLog);
             // 
             // mainContainer.Panel2
@@ -168,7 +170,6 @@
             this.viewLog.Size = new System.Drawing.Size(1239, 689);
             this.viewLog.TabIndex = 0;
             this.viewLog.UseCompatibleStateImageBehavior = false;
-            
             // 
             // viewSession
             // 
@@ -186,19 +187,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1246, 972);
-            this.Controls.Add(this.connection);
             this.Controls.Add(this.footer);
             this.Controls.Add(this.Server);
             this.Controls.Add(this.mainContainer);
             this.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.MainMenuStrip = this.Server;
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "FTP Server";
             this.Server.ResumeLayout(false);
             this.Server.PerformLayout();
             this.footer.ResumeLayout(false);
             this.footer.PerformLayout();
             this.mainContainer.Panel1.ResumeLayout(false);
+            this.mainContainer.Panel1.PerformLayout();
             this.mainContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).EndInit();
             this.mainContainer.ResumeLayout(false);
