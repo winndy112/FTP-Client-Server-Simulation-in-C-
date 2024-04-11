@@ -140,6 +140,7 @@ namespace Ftp_Server
                 usernameTextBox.Text = userListBox.GetItemText(userListBox.SelectedItem);
                 passwordTextBox.Clear();
                 passwordTextBox.UseSystemPasswordChar = true;
+
                 roleComboBox.SelectedIndex = -1;
                 virtualPathTextBox.Clear();
                 locationTextBox.Clear();
@@ -153,25 +154,31 @@ namespace Ftp_Server
 
         private void passwordTextBox_Enter(object sender, EventArgs e)
         {
-            if (passwordTextBox.Text == "Enter new password?")
+            if (userListBox.SelectedIndex > -1 && userListBox.SelectedIndex < allUsers.Count)
             {
-                passwordTextBox.ForeColor = Color.Black;
-                passwordTextBox.UseSystemPasswordChar = true;
-                passwordTextBox.Clear();
+                if (passwordTextBox.Text == "Enter new password?")
+                {
+                    passwordTextBox.ForeColor = Color.Black;
+                    passwordTextBox.UseSystemPasswordChar = true;
+                    passwordTextBox.Clear();
+                }
             }
         }
 
         private void passwordTextBox_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(passwordTextBox.Text))
+            if (userListBox.SelectedIndex > -1 && userListBox.SelectedIndex < allUsers.Count)
             {
-                passwordTextBox.UseSystemPasswordChar = false;
-                passwordTextBox.Text = "Enter new password?";
-                passwordTextBox.ForeColor = Color.Gray;
-            }
-            else
-            {
-                passwordTextBox.UseSystemPasswordChar = true;
+                if (string.IsNullOrEmpty(passwordTextBox.Text))
+                {
+                    passwordTextBox.UseSystemPasswordChar = false;
+                    passwordTextBox.Text = "Enter new password?";
+                    passwordTextBox.ForeColor = Color.Gray;
+                }
+                else
+                {
+                    passwordTextBox.UseSystemPasswordChar = true;
+                }
             }
         }
 
