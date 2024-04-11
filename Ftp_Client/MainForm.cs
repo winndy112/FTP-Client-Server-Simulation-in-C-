@@ -90,15 +90,17 @@ namespace Ftp_Client
                         // infoBox.Text += response + '\n'; // Phản hồi từ máy chủ sau khi gửi lệnh USER
 
                         // Send password
-                        data = Encoding.ASCII.GetBytes(password);
+                        data = Encoding.ASCII.GetBytes("PASS " + password);
                         await stream.WriteAsync(data, 0, data.Length);
 
                         // Receive response
                         bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
                         response = Encoding.ASCII.GetString(buffer, 0, bytesRead);
-                        // infoBox.Text += response + '\n';
 
-                        MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (response.StartsWith("230"))
+                            MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("Đăng nhập thất bại! Username hoặc password không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 catch (Exception ex)

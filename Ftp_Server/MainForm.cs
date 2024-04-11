@@ -22,9 +22,14 @@ namespace Ftp_Server
         private string host;
         private int port;
         private string password;
-        private int control_port = 30;
+
+        private int control_port = 21; // phải đảm bảo port này đang trống 
         private TcpListener listener;
         private Thread listenThread;
+
+        private string type1 = "Request";
+        private string type2 = "Response";
+        private string time;
         public MainForm()
         {
             InitializeComponent();
@@ -40,6 +45,10 @@ namespace Ftp_Server
                     port = connectionForm.port;
                     password = connectionForm.password;
                     StartListening();
+                }
+                else
+                {
+                    MessageBox.Show("Can't connect and listening, try again.", "Error");
                 }
             }
         }
@@ -85,8 +94,10 @@ namespace Ftp_Server
             {
                 listener = new TcpListener(System.Net.IPAddress.Parse("0.0.0.0"), control_port);
                 listener.Start();
+
                 MessageBox.Show("FTP server started listening on port " + control_port);
                 connection.Visible = false;
+                
                 label1.Text = "Connected to " + host;
                 CreateHeaders_viewLog();
                 CreateHeaders_viewSession();
@@ -131,18 +142,11 @@ namespace Ftp_Server
             {
                 if (BCrypt.Net.BCrypt.EnhancedVerify(password, result["passwd"].AsString))
                 {
-                    Console.WriteLine("Valid password.");
+                   
                     return true;
                 }
-                else
-                {
-                    Console.WriteLine("Invalid password.");
-                }
+               
 
-            }
-            else
-            {
-                Console.WriteLine("User not found.");
             }
             return false;
         }
@@ -185,39 +189,102 @@ namespace Ftp_Server
             }
         }
 
-
-        private void handleUser(object obj, string cmd)
+        private string getTime()
         {
-            NetworkStream stream = (NetworkStream)obj;
+            DateTime utcNow = DateTime.UtcNow;
+            DateTime localTime = utcNow.ToLocalTime();
+            return localTime.ToString();
+        }
+       
+        private void addLog( string[] row)
+        {
+            ListViewItem item = new ListViewItem(row);
+            if(viewLog.InvokeRequired)
+            {
+                viewLog.Invoke(new MethodInvoker(delegate
+                {
+                    viewLog.Items.Add(item);
+                }));
+            }
+            else
+            {
+                viewLog.Items.Add(item);
+            }
+           
+        }
+        private void addSession(string[] row)
+        {
+            ListViewItem item = new ListViewItem(row);
+            if (viewLog.InvokeRequired)
+            {
+                viewSession.Invoke(new MethodInvoker(delegate
+                {
+                    viewSession.Items.Add(item);
+                }));
+            }
+            else
+            {
+                viewSession.Items.Add(item);
+            }
+
+        }
+        private void handleUser(object obj, object obj_stream, string cmd)
+        {
+            TcpClient client = (TcpClient)obj;
+            NetworkStream stream = (NetworkStream)obj_stream;
 
             byte[] buffer = new byte[1024];
 
             // Get username after user cmd
             string username = cmd.Substring(5);
-            Console.WriteLine("Username of client: " + username);
+
+            time = getTime();
+            string[] row = { time, this.type1, cmd };
+            addLog(row);
+
+            
 
             // Send response for user cmd
-            byte[] response = Encoding.ASCII.GetBytes("331 Please enter your password. Password: ");
+            string res = "331 Please enter your password. Password: ";
+            byte[] response = Encoding.ASCII.GetBytes(res);
             stream.Write(response, 0, response.Length);
+            time = getTime();
+            
+            string[] res_log = { time, this.type2, res };
+            addLog(res_log);
 
             // Receive password from client
             int bytesRead = stream.Read(buffer, 0, buffer.Length);
             password = Encoding.ASCII.GetString(buffer, 0, bytesRead);
-            Console.WriteLine("Password of client: " + password);
-
+            
+            time = getTime();
+            string[] row2 = { time, type1, password};
+            addLog( row2);
+          
             // Verify password
-            bool ok = verifyUser(username, password);
+            bool ok = verifyUser(username, password.Substring(5));
+
             if (ok)
             {
                 // Send response
                 response = Encoding.ASCII.GetBytes("230 You are logged in.");
                 stream.Write(response, 0, response.Length);
+                time = getTime();
+                string[] tmp_res = { time, type2, "230 You are logged in." };
+                addLog(tmp_res);
+                string sessionID = Guid.NewGuid().ToString();
+                string[] success_log = { time, sessionID, client.Client.RemoteEndPoint.ToString(), username };
+                addSession(success_log);
             }
             else
             {
                 // Send response
                 response = Encoding.ASCII.GetBytes("530 Login incorrect.");
                 stream.Write(response, 0, response.Length);
+                time = getTime();
+                string[] tmp_res = { time, type2, "530 Login incorrect." };
+                addLog(tmp_res);
+
             }
 
         }
@@ -255,7 +322,7 @@ namespace Ftp_Server
                     }
                     else if (receivedData.StartsWith("USER"))
                     {
-                        handleUser(stream, receivedData);
+                        handleUser(client, stream, receivedData);
                     }
                     else if (receivedData.StartsWith("LIST"))
                     {
@@ -303,10 +370,7 @@ namespace Ftp_Server
         {
         }
 
-        private void footer_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+    
     }
 
     public class MyMongoDBConnect
@@ -325,6 +389,8 @@ namespace Ftp_Server
             // Send a ping to confirm a successful connection
         }
     }
+    
+
     public class Account
     {
 
