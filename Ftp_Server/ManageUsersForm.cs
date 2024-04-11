@@ -69,9 +69,18 @@ namespace Ftp_Server
             accountCollection.UpdateOne(filter, update, options);
             MessageBox.Show("Apply successfully.");
             // add a new user to allUsers
-            
-            // Bị lỗi nếu mà add user nhưng không thay đổi thông tin.
-            allUsers.Add(findOneAlreadyUsers(usernameTextBox.Text));
+            if (userListBox.SelectedIndex > -1 )
+            {
+                // Bị lỗi nếu mà add user nhưng không thay đổi thông tin.
+                if (userListBox.SelectedIndex < allUsers.Count)
+                {
+                    allUsers[userListBox.SelectedIndex].passwd = encrypt_passwd;
+                }
+                else
+                {
+                    allUsers.Add(findOneAlreadyUsers(usernameTextBox.Text));
+                }
+            }
         }
 
         private void locationTextBox_Enter(object sender, EventArgs e)

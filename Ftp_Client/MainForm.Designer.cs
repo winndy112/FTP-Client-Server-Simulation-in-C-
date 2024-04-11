@@ -88,10 +88,9 @@
             // 
             // passwdTextBox
             // 
-            this.passwdTextBox.Location = new System.Drawing.Point(972, 9);
-            this.passwdTextBox.Multiline = true;
+            this.passwdTextBox.Location = new System.Drawing.Point(966, 14);
             this.passwdTextBox.Name = "passwdTextBox";
-            this.passwdTextBox.Size = new System.Drawing.Size(170, 42);
+            this.passwdTextBox.Size = new System.Drawing.Size(170, 31);
             this.passwdTextBox.TabIndex = 7;
             this.passwdTextBox.UseSystemPasswordChar = true;
             // 
@@ -161,7 +160,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.mainContainer.Location = new System.Drawing.Point(0, 109);
+            this.mainContainer.Location = new System.Drawing.Point(12, 111);
             this.mainContainer.Name = "mainContainer";
             this.mainContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -172,8 +171,8 @@
             // mainContainer.Panel2
             // 
             this.mainContainer.Panel2.BackColor = System.Drawing.SystemColors.Info;
-            this.mainContainer.Size = new System.Drawing.Size(1527, 809);
-            this.mainContainer.SplitterDistance = 538;
+            this.mainContainer.Size = new System.Drawing.Size(1504, 800);
+            this.mainContainer.SplitterDistance = 532;
             this.mainContainer.SplitterWidth = 2;
             this.mainContainer.TabIndex = 2;
             // 
@@ -194,8 +193,8 @@
             this.mainsiteContainer.Panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.mainsiteContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.mainsiteContainer.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mainsiteContainer.Size = new System.Drawing.Size(1527, 538);
-            this.mainsiteContainer.SplitterDistance = 507;
+            this.mainsiteContainer.Size = new System.Drawing.Size(1504, 532);
+            this.mainsiteContainer.SplitterDistance = 499;
             this.mainsiteContainer.SplitterWidth = 2;
             this.mainsiteContainer.TabIndex = 0;
             // 
@@ -208,7 +207,6 @@
             this.userToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(1528, 40);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
