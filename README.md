@@ -1,74 +1,23 @@
-# Basic_Network_Programming_Project
-This is our project for educational purposes. 
+# FTP-Client-Server-Simulation-in-C#
+This project explores the implementation of an FTP (File Transfer Protocol) protocol. It simulates how FTP clients and servers communicate over TCP, handling file transfers using active mode and passive mode over UI and Console log.
 
-# FTP
-- File Tranfer Protocol
-- Port 21 for issuing commands. For example:
-```
-C:\Users\PC>ftp
-ftp> help
-Commands may be abbreviated.  Commands are:
+## Tools and Technologies
+- C#: The project is implemented using C#, which is ideal for handling network communication due to its rich libraries and support for socket programming.
+- .NET Framework: The project leverages the .NET framework, which provides robust networking classes like TcpClient and TcpListener for creating the FTP client and server.
+- Socket Programming: Used for creating low-level communication between the FTP client and server over TCP. Sockets enable sending and receiving data over the network.
+- FTP Protocol (File Transfer Protocol): This project simulates an FTP system, adhering to standard protocol rules for file transfer, user authentication, and connection management, particularly focusing on active mode FTP.
 
-!               delete          literal         prompt          send
-?               debug           ls              put             status
-append          dir             mdelete         pwd             trace
-ascii           disconnect      mdir            quit            type
-bell            get             mget            quote           user
-binary          glob            mkdir           recv            verbose
-bye             hash            mls             remotehelp
-cd              help            mput            rename
-close           lcd             open            rmdir
-ftp> quit
-
-C:\Users\PC>
-```
-
-- Port 20 for tranfering files during active mode session.
-For example, `get <filename>` is downloading `<filename>` from server. `put <filename>` is uploading `<filename>` to server.
-
-Xem thêm tại: 
-- https://youtu.be/GCG5zHjE9gM?si=kgYAYrjwW6d0lP3y
-
-- https://github.com/PSukhalani-96/FTP
-
-## FTP Client
-Sử dụng socket - kết nối TCP. Giao diện gồm mấy thứ tạm tạm như này.
-### 1. Sign up 
-- Port 21
-### 2. Sign in 
-- Port 21
-### 3. Upload file 
-- Port 21 - Gọi hàm xử lý
-- Port 20 - Truyền file
-### 4. Download file 
-- Port 21 - Gọi hàm xử lý
-- Port 20 - Truyền file
-
-### 5. Get list of files
-- Port 21
-
-![FTPS](/photo/image.png)
-
-
-## FTP Server
-Server listen Client -> nếu có yêu cầu kết nối
-- Kiểm tra đăng nhập
-- Gửi message cho client
-
-
-## Overview
-
-FTP có 3 phương thức truyền dữ liệu là : stream mode, block mode và compressed mode
-
-### Mã thông điệp
-![LoginStatusCode](/photo/image-1.png)
-
-![DownloadStatusCode](/photo/image-2.png)
-![UploadStatusCode](/photo/image-3.png)
-
-
-Xem thêm tại: 
-https://luanvan.net.vn/luan-van/do-an-tim-hieu-ve-giao-thuc-ftp-32410/
+## Components
+- FTP Client:
+>- File Upload: The client connects to the FTP server and sends files for storage, using TCP connections to ensure reliable data transfer.
+>- File Download: Retrieves files from the server, allowing users to access stored data locally.
+>- Directory Listing: The client can request a list of files or directories available on the server, displaying them for user interaction.
+>- Command Execution: The client sends commands to the server to perform actions like retrieving files or changing directories.
+- FTP Server:
+>- User Authentication: The server validates user credentials, ensuring secure access control.
+>- Request Handling: Responds to client requests for file uploads, downloads, and directory listings. It maintains a log of sessions and actions.
+>- Active Mode FTP: The server listens on one port (21) for control commands and another (20) for data transfer, coordinating with the client to manage file transfers.
+>- Session Management: It ensures client-server communication persists throughout file transfers and terminates connections gracefully after use.
 
 
 
