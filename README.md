@@ -71,17 +71,5 @@ Xem thêm tại:
 https://luanvan.net.vn/luan-van/do-an-tim-hieu-ve-giao-thuc-ftp-32410/
 
 
-## TASK
-- Chọn database (Mongo): 
-    - Lưu account
-    - File thì tau không chắc nhưng maybe là có đó
-
-- Thiết kế giao diện FTP Client:
-    - Viết các hàm xử lý 
-
-- Thiết kế giao diện FTP Server
-
-
-
 
 
